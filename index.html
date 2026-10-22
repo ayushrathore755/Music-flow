@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MusicFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="player-wrap">
+
+    <!-- header label, styled like a vintage record sleeve -->
+    <div class="brand">
+      <span class="brand-name">MusicFlow</span>
+      <span class="brand-tag">45 RPM</span>
+    </div>
+
+    <div class="deck">
+
+      <!-- turntable panel -->
+      <div class="turntable">
+        <div class="platter">
+          <img id="cover" class="record" src="https://placehold.co/500x500/1e1a17/c9a227?text=%E2%99%AA" alt="album cover">
+          <div class="record-hole"></div>
+        </div>
+        <div id="tonearm" class="tonearm"></div>
+      </div>
+
+      <!-- track info and controls panel -->
+      <div class="console">
+
+        <div class="track-info">
+          <h1 id="songTitle">No Track Loaded</h1>
+          <p id="songArtist">Playlist is empty</p>
+        </div>
+
+        <!-- progress / tape counter -->
+        <div class="counter-row">
+          <span id="currentTime">00:00</span>
+          <input type="range" id="seekBar" class="seek" value="0" min="0" max="100" step="0.1">
+          <span id="duration">00:00</span>
+        </div>
+
+        <!-- main controls -->
+        <div class="controls">
+          <button id="shuffleBtn" class="ctrl-btn small" title="Shuffle">
+            <svg viewBox="0 0 24 24"><path d="M4 4h4l9 12h3M4 20h4l3-4M16 4h4v4M16 20h4v-4"/></svg>
+          </button>
+          <button id="prevBtn" class="ctrl-btn" title="Previous">
+            <svg viewBox="0 0 24 24"><path d="M6 5v14M19 5 8 12l11 7z"/></svg>
+          </button>
+          <button id="playBtn" class="ctrl-btn play" title="Play/Pause">
+            <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button id="nextBtn" class="ctrl-btn" title="Next">
+            <svg viewBox="0 0 24 24"><path d="M18 5v14M5 5l11 7-11 7z"/></svg>
+          </button>
+          <button id="repeatBtn" class="ctrl-btn small" title="Repeat">
+            <svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </button>
+        </div>
+
+        <!-- volume + visualizer -->
+        <div class="bottom-row">
+          <div class="volume">
+            <svg viewBox="0 0 24 24" class="vol-icon"><path d="M3 10v4h4l5 5V5L7 10H3z"/></svg>
+            <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.7">
+          </div>
+          <canvas id="visualizer" width="160" height="34"></canvas>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- playlist -->
+    <div class="playlist-panel">
+      <div class="playlist-head">
+        <span>Playlist</span>
+        <label class="add-label">
+          + Add Song
+          <input type="file" id="fileInput" accept="audio/*" multiple hidden>
+        </label>
+      </div>
+      <ul id="playlist" class="playlist"></ul>
+    </div>
+
+  </div>
+
+  <audio id="audio"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
